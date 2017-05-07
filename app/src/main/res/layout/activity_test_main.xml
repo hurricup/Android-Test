@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/winlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hurricup.mytest.TestMain"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+  <GridLayout
+      android:id="@+id/mygrid"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:layout_editor_absoluteX="8dp"
+      tools:layout_editor_absoluteY="8dp">
+
+
+  </GridLayout>
+
+
+</android.support.constraint.ConstraintLayout>
