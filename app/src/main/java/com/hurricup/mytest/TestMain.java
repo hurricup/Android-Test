@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CheckBox;
 import android.widget.GridLayout;
 
 public class TestMain extends AppCompatActivity {
@@ -22,6 +23,10 @@ public class TestMain extends AppCompatActivity {
     sensorManager.registerListener(new SensorEventListener() {
       @Override
       public void onSensorChanged(SensorEvent event) {
+        CheckBox tiltCheckbox = (CheckBox)findViewById(R.id.tilt_checkbox);
+        if (!tiltCheckbox.isChecked()) {
+          return;
+        }
         float forceX = event.values[0];
         float forceY = event.values[1];
 
@@ -47,6 +52,6 @@ public class TestMain extends AppCompatActivity {
       @Override
       public void onAccuracyChanged(Sensor sensor, int accuracy) {
       }
-    }, gyroscope, 100);
+    }, gyroscope, 200);
   }
 }

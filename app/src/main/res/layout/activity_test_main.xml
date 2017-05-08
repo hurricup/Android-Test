@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/winlayout"
     android:layout_width="match_parent"
@@ -8,12 +9,21 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+  <CheckBox
+      android:text="Allow to move by tilting"
+      android:layout_width="370dp"
+      android:layout_height="31dp"
+      tools:layout_editor_absoluteY="8dp"
+      tools:layout_editor_absoluteX="7dp"
+      android:id="@+id/tilt_checkbox" />
+
   <GridLayout
       android:id="@+id/mygrid"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      tools:layout_editor_absoluteX="8dp"
-      tools:layout_editor_absoluteY="8dp">
+      tools:layout_editor_absoluteX="16dp"
+      app:layout_constraintTop_toBottomOf="@+id/tilt_checkbox"
+      android:layout_marginTop="8dp">
 
 
   </GridLayout>
