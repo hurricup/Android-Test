@@ -68,7 +68,7 @@ public class ButtonManager {
                 || tryToMove(item, x, y + 1);
   }
 
-  private boolean tryToMove(Item item, int x, int y) {
+  public boolean tryToMove(Item item, int x, int y) {
     if (x < 0 || y < 0 || x >= BOARD_WIDTH || y >= BOARD_HEIGHT || getItem(x, y) != null) {
       return false;
     }
@@ -129,5 +129,9 @@ public class ButtonManager {
 
   public Context getContext() {
     return myContext;
+  }
+
+  public List<Item> getItems() {
+    return myItems;
   }
 }
