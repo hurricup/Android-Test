@@ -26,5 +26,7 @@ dependencies {
   })
   compile 'com.android.support:appcompat-v7:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
+// https://mvnrepository.com/artifact/org.jetbrains/annotations
+  compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
   testCompile 'junit:junit:4.12'
 }
