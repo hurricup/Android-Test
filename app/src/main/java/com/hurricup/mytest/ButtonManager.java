@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ButtonManager {
 
         Item newItem = new Item(this, x, y);
         myItems.add(newItem);
-        ImageButton newButton = newItem.getButton();
+        ImageView newButton = newItem.getButton();
         newButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -85,7 +85,7 @@ public class ButtonManager {
   }
 
   private void makeMove(final Item item, final int x, final int y) {
-    ImageButton button = item.getButton();
+    ImageView button = item.getButton();
 
     int deltaX = x - item.getX();
     int deltaY = y - item.getY();

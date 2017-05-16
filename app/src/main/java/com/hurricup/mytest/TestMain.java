@@ -11,6 +11,7 @@ import android.widget.GridLayout;
 
 public class TestMain extends AppCompatActivity {
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class TestMain extends AppCompatActivity {
 
     final ButtonManager buttonManager = new ButtonManager(this, (GridLayout)findViewById(R.id.mygrid));
     buttonManager.addButtons();
-    SensorManager sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+    final SensorManager sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
     Sensor gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     sensorManager.registerListener(new SensorEventListener() {
       @Override
@@ -27,12 +28,10 @@ public class TestMain extends AppCompatActivity {
         if (!tiltCheckbox.isChecked()) {
           return;
         }
-        float forceX = event.values[0];
-        float forceY = event.values[1];
 
-        //getWindowManager().getDefaultDisplay().getRotation();
-        int deltaX = forceX < -3 ? 1 : forceX > 3 ? -1 : 0;
-        int deltaY = forceY < -3 ? -1 : forceY > 3 ? 1 : 0;
+        Point3D forces = SensorUtil.getNormalizedAccelerometerForces(getWindowManager(), event);
+        int deltaX = forces.x < -3 ? 1 : forces.x > 3 ? -1 : 0;
+        int deltaY = forces.y < -3 ? -1 : forces.y > 3 ? 1 : 0;
         if (deltaX == 0 && deltaY == 0) {
           return;
         }
@@ -43,7 +42,11 @@ public class TestMain extends AppCompatActivity {
           }
         }
         for (Item item : buttonManager.getItems()) {
-          if (buttonManager.tryToMove(item, item.getX() + deltaX, item.getY() + deltaY)) {
+          // fixme we should first process axis with max force
+          if (deltaX != 0 && buttonManager.tryToMove(item, item.getX() + deltaX, item.getY())) {
+            return;
+          }
+          if (deltaY != 0 && buttonManager.tryToMove(item, item.getX(), item.getY() + deltaY)) {
             return;
           }
         }

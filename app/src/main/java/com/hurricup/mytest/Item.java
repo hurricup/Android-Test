@@ -1,14 +1,14 @@
 package com.hurricup.mytest;
 
 import android.content.Context;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 /**
  * Created by hurricup on 07.05.2017.
  */
 
 public class Item {
-  private final ImageButton myButton;
+  private final ImageView myButton;
   private int myX;
   private int myY;
   private boolean isMoving = false;
@@ -17,7 +17,7 @@ public class Item {
     myX = x;
     myY = y;
     Context context = manager.getContext();
-    myButton = new ImageButton(context);
+    myButton = new ImageView(context);
     myButton.setImageDrawable(context.getResources().getDrawable(R.drawable.squareava));
   }
 
@@ -37,7 +37,7 @@ public class Item {
     myY = y;
   }
 
-  public ImageButton getButton() {
+  public ImageView getButton() {
     return myButton;
   }
 
